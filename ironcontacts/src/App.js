@@ -42,11 +42,16 @@ class App extends Component {
     this.setState({ contacts: sortedContact });
   }
 
+  //delete contact
   removeContact(indexContact) {
     let newContacts = this.state.contacts.slice();
     newContacts.splice(indexContact, 1);
     this.setState({ contacts: newContacts });
+    this.setState({
+      contacts: this.state.contacts.filter((c, i) => i !== indexToRemove) //delete contact using filter function
+    });
   }
+
   componentWillMount() {
     var startingContacts = contacts.slice(0, 5);
     this.setState({
